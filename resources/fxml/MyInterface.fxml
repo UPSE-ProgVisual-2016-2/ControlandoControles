@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SpinnerValueFactory?>
+<?import javafx.scene.control.Button?>
+
+<TitledPane text="Pantallita" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="application.ControladorMyInterface">
+   <content>
+   	<GridPane> 
+   
+      		<children>
+              <MenuBar GridPane.columnSpan="2147483647">
+              <menus>
+                <Menu mnemonicParsing="false" text="Configurar Poder">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Aumentar Poder" />
+                        <MenuItem mnemonicParsing="false" text="Disminuir Poder" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Llamada">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Prensa" />
+                        <MenuItem mnemonicParsing="false" text="Policia" />
+                        <MenuItem mnemonicParsing="false" text="Mafioso Mas Mafioso" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Emprender">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Sacar Linea de Ropa" />
+                        <MenuItem mnemonicParsing="false" text="Serie Televisiva" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Juzgar">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Culpable" />
+                        <MenuItem mnemonicParsing="false" text="Inocente" />
+                    </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+            <Label text="Mi Poder" GridPane.rowIndex="1" />
+         	<Label text="Minutos Para Morir" GridPane.rowIndex="2" />
+            <Spinner fx:id="spinnerMinutosPaMorir" GridPane.rowIndex="2" GridPane.columnIndex="1" editable="true">
+            	<valueFactory>
+            		<SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="60"/>
+            	</valueFactory>
+            </Spinner>
+            
+            <Slider fx:id="sliderPoder" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <CheckBox fx:id="checkProbarlo" mnemonicParsing="false" text="Quieres Probarlo" GridPane.rowIndex="4" />
+            <Button text="Mostrar Valores" fx:id="buttonMostrarValores" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="2" onAction="#mostrarDatos" />
+      		</children>
+   	</GridPane>
+   </content>
+</TitledPane>
