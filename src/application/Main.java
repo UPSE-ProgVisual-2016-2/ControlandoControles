@@ -2,7 +2,9 @@ package application;
 	
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Group;
@@ -43,6 +45,20 @@ public class Main extends Application {
 			verticalLayout.getChildren().add(button);
 			verticalLayout.getChildren().add(botonSalir);
 			root.getChildren().add(verticalLayout);
+			
+			verticalLayout.setOnMouseClicked( e -> System.out.println("Evento nivel 2"));
+			verticalLayout.setOnMousePressed( new EventHandler<Event>() {
+
+				@Override
+				public void handle(Event event) {
+					// TODO Auto-generated method stub
+					String fuente = event.getTarget().toString();
+					System.out.println("El evento viene de la destino: " + fuente);
+				}
+			});
+			
+			verticalLayout.addEventHandler(EventType.ROOT,
+					e -> System.out.println("Evento nivel dios!"));
 			
 			Scene scene = new Scene(root,500,500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
