@@ -1,10 +1,14 @@
 package application;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 public class ControladorMyInterface {
 
@@ -12,7 +16,9 @@ public class ControladorMyInterface {
 	@FXML Spinner<Integer> spinnerMinutosPaMorir;
 	@FXML Slider sliderPoder;
 	@FXML CheckBox checkProbarlo;
-	@FXML Button buttonMostrarValores;
+	@FXML public Button buttonMostrarValores;
+	@FXML public TextField txtNombre;
+	@FXML public TextField txtEdad;
 	
 	public void mostrarDatos()
 	{
@@ -29,5 +35,55 @@ public class ControladorMyInterface {
 		}else{
 			System.out.println("POrque no quieres probarlo @#$@#$! =<");
 		}
+	}
+	
+	public void validarTextoNumerico()
+	{
+		
+		txtEdad.focusedProperty().addListener(new ChangeListener<Boolean>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				if(!newValue)
+				{
+					if(!txtEdad.getText().matches("\\d+"))
+					{
+						txtEdad.setText("");
+					}
+				}
+				
+			}
+		});
+	}
+	
+	public boolean validarTextoAlfabetico()
+	{
+		boolean valido = false;
+		
+		txtNombre.focusedProperty().addListener((arg0, oldValue, newValue) ->
+				{
+					if(!newValue)
+					{
+						if(!txtNombre.getText().matches("\\w+"))
+						{
+							txtNombre.setText("");
+						}
+					}
+				});
+		return valido;
+	}
+	
+	public void initialize()
+	{
+		buttonMostrarValores.addEventFilter(MouseEvent.MOUSE_CLICKED, 
+				e -> {
+					if(sliderPoder.getValue()<50)
+					{
+						System.out.println("Evento filtrado. "
+								+ "No se puede mostrar valores de poder tan bajos.");
+					}
+				});
+		validarTextoAlfabetico();
+		validarTextoNumerico();
 	}
 }
