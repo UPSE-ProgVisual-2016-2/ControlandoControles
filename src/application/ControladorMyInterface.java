@@ -46,7 +46,7 @@ public class ControladorMyInterface {
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 				if(!newValue)
 				{
-					if(!txtEdad.getText().matches("\\d+"))
+					if(!txtEdad.getText().matches("\\d{1,3}"))
 					{
 						txtEdad.setText("");
 					}
@@ -64,7 +64,7 @@ public class ControladorMyInterface {
 				{
 					if(!newValue)
 					{
-						if(!txtNombre.getText().matches("\\w+"))
+						if(!txtNombre.getText().matches("^[a-zA-Z]+[a-zA-Z|\\s]+"))
 						{
 							txtNombre.setText("");
 						}
